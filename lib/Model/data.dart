@@ -1,14 +1,14 @@
 class Creator {
-  final String id;
-  final String userName;
-  final String profileUrl;
-  final String profession;
+  String? id;
+  String? userName;
+  String? profileUrl;
+  String? profession;
 
   Creator({
-    required this.id,
-    required this.userName,
-    required this.profileUrl,
-    required this.profession,
+    this.id,
+    this.userName,
+    this.profileUrl,
+    this.profession,
   });
 }
 

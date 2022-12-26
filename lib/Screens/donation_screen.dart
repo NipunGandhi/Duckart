@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../Provider/my_controller.dart';
 
 class DonationScreen extends StatefulWidget {
   static const String name = "DonationScreen";
@@ -9,7 +12,9 @@ class DonationScreen extends StatefulWidget {
 }
 
 class _DonationScreenState extends State<DonationScreen> {
-  String dropdownvalue = '₹';
+  final MyController _instance = Get.find();
+
+  String dropDownValue = '₹';
   String value = "0";
   var items = [
     r'$',
@@ -37,24 +42,25 @@ class _DonationScreenState extends State<DonationScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
+          children: [
             CircleAvatar(
               backgroundImage: NetworkImage(
-                  "https://api.time.com/wp-content/uploads/2016/05/gettyimages-494848194.jpg"),
+                _instance.dataOfCreator.profileUrl.toString(),
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text(
-              "Creator Name",
-              style: TextStyle(
+              _instance.dataOfCreator.userName.toString(),
+              style: const TextStyle(
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            Icon(
+            const Icon(
               Icons.check_circle_rounded,
               color: Colors.blue,
               size: 20,
@@ -71,15 +77,15 @@ class _DonationScreenState extends State<DonationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    "Send your love to CarryMinati",
-                    style: TextStyle(
+                    "Send your love to ${_instance.dataOfCreator.userName}",
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Become a real fan",
                     style: TextStyle(
                       fontSize: 17,
@@ -114,7 +120,7 @@ class _DonationScreenState extends State<DonationScreen> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton(
                             isExpanded: true,
-                            value: dropdownvalue,
+                            value: dropDownValue,
                             icon: const Icon(
                               Icons.unfold_more_outlined,
                             ),
@@ -126,7 +132,7 @@ class _DonationScreenState extends State<DonationScreen> {
                             }).toList(),
                             onChanged: (String? newValue) {
                               setState(() {
-                                dropdownvalue = newValue!;
+                                dropDownValue = newValue!;
                               });
                             },
                           ),
@@ -186,7 +192,10 @@ class _DonationScreenState extends State<DonationScreen> {
                   height: 45,
                   child: Center(
                     child: Text(
-                      "Support $value",
+                      "Support $dropDownValue$value",
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),

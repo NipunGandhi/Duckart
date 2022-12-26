@@ -1,5 +1,5 @@
-import 'package:duckart/creator_widget.dart';
-import 'package:duckart/data.dart';
+import 'package:duckart/Model/data.dart';
+import 'package:duckart/Widgets/creator_widget.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -21,10 +21,10 @@ class MyHomePage extends StatelessWidget {
         crossAxisCount: 2,
         children: List.generate(abc.length, (index) {
           return CreatorWidget(
-            id: abc[index].id,
-            userName: abc[index].userName,
-            profileUrl: abc[index].profileUrl,
-            profession: abc[index].profession,
+            id: abc[index].id.toString(),
+            userName: abc[index].userName.toString(),
+            profileUrl: abc[index].profileUrl.toString(),
+            profession: abc[index].profession.toString(),
           );
         }),
       ),

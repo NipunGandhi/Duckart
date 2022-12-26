@@ -1,6 +1,8 @@
-import 'package:duckart/donation_screen.dart';
-import 'package:duckart/homepage.dart';
+import 'package:duckart/Screens/donation_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'Screens/homepage.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
