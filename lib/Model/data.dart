@@ -70,3 +70,13 @@ List<Creator> abc = [
     profession: "Youtuber",
   ),
 ];
+
+class DonationHistory {
+  String? id;
+  String? currency;
+  String? amount;
+  String? name;
+  String? message;
+
+  DonationHistory(this.id, this.currency, this.amount, this.name, this.message);
+}

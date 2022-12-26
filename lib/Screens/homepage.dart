@@ -1,4 +1,5 @@
 import 'package:duckart/Model/data.dart';
+import 'package:duckart/Screens/profile_page.dart';
 import 'package:duckart/Widgets/creator_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,27 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF4904DA),
+        title: const Text("T I O B U"),
+        elevation: 1,
+        titleSpacing: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.menu_outlined,
+          ),
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, ProfilePage.name);
+            },
+            child: const CircleAvatar(
+              backgroundImage: NetworkImage(
+                "https://cdn4.iconfinder.com/data/icons/instagram-ui-twotone/48/Paul-17-512.png",
+              ),
+            ),
+          ),
+        ],
       ),
       body: GridView.count(
         padding: const EdgeInsets.symmetric(
