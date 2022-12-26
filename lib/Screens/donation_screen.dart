@@ -1,3 +1,5 @@
+import 'package:duckart/Model/data.dart';
+import 'package:duckart/Screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +18,8 @@ class _DonationScreenState extends State<DonationScreen> {
 
   String dropDownValue = '₹';
   String value = "0";
+  String name = "";
+  String message = "";
   var items = [
     r'$',
     '₹',
@@ -151,8 +155,13 @@ class _DonationScreenState extends State<DonationScreen> {
                   const SizedBox(
                     height: 12,
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    onChanged: (abc) {
+                      setState(() {
+                        name = abc;
+                      });
+                    },
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Your name (Optional)",
                       hintStyle: TextStyle(
@@ -164,6 +173,11 @@ class _DonationScreenState extends State<DonationScreen> {
                     height: 12,
                   ),
                   TextFormField(
+                    onChanged: (abc) {
+                      setState(() {
+                        message = abc;
+                      });
+                    },
                     maxLines: 5,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -199,7 +213,29 @@ class _DonationScreenState extends State<DonationScreen> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  if (int.parse(value) > 0) {
+                    _instance.donations.add(
+                      DonationHistory(
+                        _instance.dataOfCreator.id,
+                        dropDownValue,
+                        value,
+                        name.isNotEmpty ? name : "-",
+                        message.isNotEmpty ? message : "-",
+                      ),
+                    );
+                    Navigator.pushReplacementNamed(context, ProfilePage.name);
+                  } else {
+                    Get.snackbar(
+                      "Value not processed",
+                      "Value should be not null or less than 1",
+                      backgroundColor: const Color(0xFF4904DA),
+                      colorText: Colors.white,
+                      snackPosition: SnackPosition.BOTTOM,
+                      duration: const Duration(seconds: 2),
+                    );
+                  }
+                },
               ),
             ),
           ),

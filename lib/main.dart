@@ -1,4 +1,5 @@
 import 'package:duckart/Screens/donation_screen.dart';
+import 'package:duckart/Screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         DonationScreen.name: (context) => const DonationScreen(),
+        ProfilePage.name: (context) => ProfilePage(),
       },
     );
   }
