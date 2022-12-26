@@ -33,22 +33,44 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.count(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
-        ),
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: List.generate(abc.length, (index) {
-          return CreatorWidget(
-            id: abc[index].id.toString(),
-            userName: abc[index].userName.toString(),
-            profileUrl: abc[index].profileUrl.toString(),
-            profession: abc[index].profession.toString(),
-          );
-        }),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              bottom: 2,
+            ),
+            height: 35,
+            child: const Text(
+              "Recommended Creators",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Expanded(
+            child: GridView.count(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 10,
+              crossAxisCount: 2,
+              children: List.generate(abc.length, (index) {
+                return CreatorWidget(
+                  id: abc[index].id.toString(),
+                  userName: abc[index].userName.toString(),
+                  profileUrl: abc[index].profileUrl.toString(),
+                  profession: abc[index].profession.toString(),
+                );
+              }),
+            ),
+          ),
+        ],
       ),
     );
   }
